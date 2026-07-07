@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: quizverse-backend
+    env: node
+    plan: free
+    buildCommand: cd backend && npm install && npm run build
+    startCommand: cd backend && npm run start
+    envVars:
+      - key: PORT
+        value: 5000
+      - key: NODE_ENV
+        value: production
+      # Set this to your Firebase Service Account JSON string in the Render Dashboard
+      - key: FIREBASE_SERVICE_ACCOUNT_JSON
+        sync: false
+      # Optional: set this if your service account JSON doesn't specify a project ID
+      - key: FIREBASE_PROJECT_ID
+        sync: false

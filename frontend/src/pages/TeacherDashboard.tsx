@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useQuizVerse } from '../contexts/QuizVerseContext';
 import { Play, Plus, Trash2, Edit, BarChart2, Calendar, Users, LogOut, Sun, Moon, Sparkles, BookOpen } from 'lucide-react';
 
-const BACKEND_URL = typeof window !== 'undefined' && window.location && (window.location.hostname === 'localhost' || window.location.hostname.match(/^\d+\.\d+\.\d+\.\d+$/))
-  ? `http://${window.location.hostname}:5000`
-  : 'http://localhost:5000';
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 
+  (typeof window !== 'undefined' && window.location && (window.location.hostname === 'localhost' || window.location.hostname.match(/^\d+\.\d+\.\d+\.\d+$/))
+    ? `http://${window.location.hostname}:5000`
+    : 'http://localhost:5000');
 
 interface TeacherDashboardProps {
   setPage: (page: string) => void;
